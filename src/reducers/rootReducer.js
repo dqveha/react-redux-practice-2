@@ -7,6 +7,13 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
+  if (action.type === 'DELETE_POST') {
+    let newPosts = state.posts.filter(post => post.id !== action.id ) // action.id came from 'mapDispatchToProps' when it was dispatched
+    return {
+      ...state,
+      posts: newPosts
+    }
+  }
   return state;
 }
 
